@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 
 	$.ajax({
-		url: "CompteController",
+		url: "AlbumController",
 		data: { op: "load" },
 		method: "POST",
 		success: function(data) {
