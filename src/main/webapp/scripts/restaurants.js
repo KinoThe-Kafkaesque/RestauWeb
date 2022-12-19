@@ -1,10 +1,28 @@
+// Get the list of quarters
+let quartiers = [];
+
+// Get the dropdown menu element
+const $quartierSelect = $('#quartier');
+function options(data) {
+	quartiers = [...data.quartiers]
+$.each(quartiers, function(index, quartier) {
+	// Create an option element
+	const $option = $('<option>');
+	$option.val(quartier.id);
+	$option.text(quartier.nom);
+
+	// Add the option to the dropdown menu
+	$quarterSelect.append($option);
+});
+}
+
 function edit(id, nom, x, y, heureOuverture, heureFemeture) {
 	$("#id").val(id)
 	$("#nom").val(nom)
 	$("#x").val(x)
 	$("#y").val(y)
-	$("#heureOuverture").val(heureOuverture) 
-	$("#heureFemeture").val(heureFemeture) 
+	$("#heureOuverture").val(heureOuverture)
+	$("#heureFemeture").val(heureFemeture)
 }
 function del(e) {
 	$.ajax({
@@ -26,9 +44,9 @@ function remplir(data) {
 			")\">Supprimer</button> </td><td><button onClick=\"edit('" +
 			e.id + "','" + e.nom + "','" + e.x + "','" + e.y + "','" + e.heureOuverture + "','" + e.heureFemeture +
 			"')\">Modifier</button></td></tr>";
-	});
-	$("#content").html(ligne);
 
+		$("#content").html(ligne);
+	});
 }
 $(document).ready(function() {
 

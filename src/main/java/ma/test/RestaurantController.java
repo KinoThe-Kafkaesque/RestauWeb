@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import ma.dao.ResaturantOnPremise;
+import ma.dao.RestaurantOnPremise;
 import ma.entites.Restaurant;
 
 @WebServlet("/RestaurantController")
-public class Controller extends HttpServlet {
+public class RestaurantController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	@EJB		
-	ResaturantOnPremise<Restaurant> restaurantEJB;
+	RestaurantOnPremise<Restaurant> restaurantEJB;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getParameter("op").equals("add")) {
