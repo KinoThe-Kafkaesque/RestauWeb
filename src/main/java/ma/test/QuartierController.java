@@ -2,13 +2,14 @@ package ma.test;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 
 import ma.dao.QuartierOnPremise;
 import ma.entites.Quartier;
@@ -43,7 +44,7 @@ public class QuartierController extends HttpServlet {
 		System.out.println(request.getParameter("op"));
 		response.setContentType("application/json");
 		List<Quartier> quartiers = quartierEJB.getAll();
-		Gson json = new Gson();
+		Jsonb json = JsonbBuilder.create();
 		response.getWriter().write(json.toJson(quartiers));
 	}
 }

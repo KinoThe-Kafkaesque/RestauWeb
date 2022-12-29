@@ -39,43 +39,48 @@
 				<td></td>
 				<td><input id="add" type="submit" value="Ajouter" /></td>
 			</tr>
-			     <tr>
-        <td>Quartier:</td>
-        <td>
-          <select id="quartier">
-            <!-- options for selecting the restaurant's quarter -->
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Categories:</td>
-        <td>
-          <select id="category">
-          </select>
-        </td>
-      </tr>
-      <tr>
-      </tr>
+			<tr>
+				<td>ville:</td>
+				<td><select id="ville">
+						<!-- options for selecting the restaurant's quarter -->
+				</select></td>
+			</tr>
+			<tr>
+				<td>Quartier:</td>
+				<td><select id="quartier">
+						<!-- options for selecting the restaurant's quarter -->
+						<option value="0">quartier</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Categories:</td>
+				<td><select id="category">
+				</select></td>
+			</tr>
+			<tr>
+			</tr>
 		</table>
 	</fieldset>
 
-	<fieldset>
-		<legend> Liste des restaurants </legend>
-		<table border="1">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nom</th>
-					<th>X</th>
-					<th>Y</th>
-					<th>Heure d'ouverture</th>
-					<th>Heure de fermeture</th>
-					<th>Supprimer</th>
-					<th>Modifier</th>
-				</tr>
-			</thead>
-			<tbody id="content">
-			</tbody>
-		</table>
+	<legend> Liste des restaurants </legend>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Nom</td>
+				<td>X</td>
+				<td>Y</td>
+				<td>Heure d'ouverture</td>
+				<td>Heure de fermeture</td>
+				<td>Quartier</td>
+				<td>Category</td>
+				<td>Supprimer</td>
+				<td>Modifier</td>
+			</tr>
+
+		</thead>
+		<tbody id="content">
+		</tbody>
+	</table>
 </body>
 </html>

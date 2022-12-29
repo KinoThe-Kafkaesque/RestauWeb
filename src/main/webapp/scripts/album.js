@@ -21,11 +21,10 @@ function remplir(data) {
 			"<img src='" + e.photo + "' alt='Photo'>" + "</td><td>" + e.restaurant +
 			"</td><td><button onClick= \"del(" + e.id +
 			")\">Supprimer</button> </td><td><button onClick=\"edit(" +
-			e.id + ",'" + e.restaurant + "'," + + ",'" + e.photo + "'," +
-			")\">Modifier</button></td></tr>";
+			e.id + ",'" + e.restaurant + "','" + e.photo +
+			"')\">Modifier</button></td></tr>";
 	});
 	$("#content").html(ligne);
-
 }
 $(document).ready(function() {
 
@@ -35,42 +34,38 @@ $(document).ready(function() {
 		data: { op: "load" },
 		method: "GET",
 		success: function(data) {
+			$.ajax({
+				url: 'http://localhost:8080/restauWebRs/restaurant',
+				success: function(restaurants) {
+					var $restaurantSelect = $('#restaurant');
+					$restaurantSelect.empty(); // clear any existing options
+					restaurants.forEach(function(restaurant) {
+						$restaurantSelect.append('<option value="' + restaurant.id + '">' + restaurant.nom + '</option>');
+					});
+				}
+			});
 			remplir(data);
 		}
 	});
 
 	$("#add").click(function() {
-		var nom = $("#nom").val();
 		const code = $("#id").val();
-		const fileInput = $("#photo")[0];
-		const file = fileInput.files[0];
-		// Create a FormData object
-		const formData = new FormData();
-
-		// Add the file to the form data
-		formData.append("photo", file);
+		const restaurant = $("#restaurant").val();
+		const photoUrl = $("#photo").val();
 		if (code) {
-			formData.append("id", code);
-			formData.append("op", "ed");
 			$.ajax({
 				url: "AlbumController",
-				data: formData,
+				data: { op: "ed", id: code, restaurant: restaurant, photo: photoUrl },
 				method: "GET",
-				contentType: false,
-				processData: false,
 				success: function(data) {
 					remplir(data);
 				}
 			});
-
-		}
-		else {
+		} else {
 			$.ajax({
 				url: "AlbumController",
-				data: formData,
+				data: { op: "add", restaurant: restaurant, photo: photoUrl },
 				method: "GET",
-				contentType: false,
-				processData: false,
 				success: function(data) {
 					remplir(data);
 				}
